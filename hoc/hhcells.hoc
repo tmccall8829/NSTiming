@@ -1,0 +1,37 @@
+{load_file("nrngui.hoc")}
+{load_file("hhtemplate.hoc")}
+
+setup0 = startsw()
+
+ncell = 10000
+
+objref cells
+objref nclist
+
+nclist = new List()
+
+proc mkcells() { local i  localobj cell, nc, nil, stim
+    cells = new List()
+    for i=0, $1-1 {
+        cell = new hhcell()
+        cells.append(cell)
+        nc = cell.connect2target(nil)
+        nclist.append(nc)
+    }
+}
+
+mkcells(ncell)
+
+tstop = 100
+
+setup1 = startsw()
+
+t0 = startsw()
+
+run()
+
+t1 = startsw()
+
+printf("Setup time: %f\n", setup1 - setup0)
+printf("Run time: %f\n", t1 - t0)
+printf("Total sim time: %f\n", ((setup1 - setup0) + (t1 - t0)))

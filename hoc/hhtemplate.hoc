@@ -1,0 +1,43 @@
+begintemplate hhcell
+
+public soma, synlist, stim, connect2target, is_art
+
+objref synlist, stim
+
+create soma
+
+proc init() {
+    define_geometry()
+    define_biophysics()
+    insert_stim()
+}
+
+proc define_geometry() {
+    soma.nseg = 1
+    soma.diam = 18.8
+    soma.L = 18.8
+    soma.Ra = 123.0
+}
+
+proc define_biophysics() {
+    soma insert hh
+}
+
+proc insert_stim() {
+    soma stim = new IClamp(0.5)
+    stim.del = 20
+    stim.dur = 60
+    stim.amp = 0.5
+}
+
+obfunc connect2target() { localobj nc
+    soma nc = new NetCon(&v(1), $o1)
+    nc.threshold = 10
+    if (numarg() == 2) {
+        $o2 = nc
+    }
+    return nc
+}
+
+
+endtemplate hhcell
