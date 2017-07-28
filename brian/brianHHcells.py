@@ -2,10 +2,11 @@ from brian import *
 from brian.library.ionic_currents import *
 import matplotlib.pyplot as plt
 import time
+import numpy as np
 
 def run_sim(ncell):
     print "Cells: ", ncell
-    defaultclock.dt = 0.025 * ms
+    defaultclock.dt = 0.1 * ms
 
     setup0 = time.time()
 
@@ -45,13 +46,13 @@ def run_sim(ncell):
 
     return run_total
 
-times = []
 cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
-for celln in cell_counts:
-   times.append(run_sim(celln))
+times = [run_sim(n) for n in cell_counts]
 
-plt.plot(cell_counts, times, '-ko')
-plt.xlabel("# cells")
-plt.ylabel("Simulation time (s)")
-plt.title("Brian")
-plt.show()
+np.savetxt("briantdata.txt", times, newline="\n")
+
+# plt.plot(cell_counts, times, '-ko')
+# plt.xlabel("# cells")
+# plt.ylabel("Simulation time (s)")
+# plt.title("Brian")
+# plt.show()

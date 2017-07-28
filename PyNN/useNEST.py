@@ -1,4 +1,4 @@
-import pyNN.neuron as sim
+import pyNN.nest as sim
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -39,13 +39,14 @@ def run_sim(ncell):
     print "Total sim time: ", setup_total + run_total
     return run_total
 
+
 cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
 times = [run_sim(n) for n in cell_counts]
 
-np.savetxt("pynnNEURONtdata.txt", times, newline="\n")
+np.savetxt("pynnNESTtdata.txt", times, newline="\n")
 
 # plt.plot(cell_counts, times, '-ko')
 # plt.xlabel("# cells")
 # plt.ylabel("Simulation time (s)")
-# plt.title("PyNN using NEURON as simulator")
+# plt.title("PyNN using NEST as simulator")
 # plt.show()

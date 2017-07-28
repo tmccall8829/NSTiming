@@ -2,6 +2,7 @@ from neuron import h, gui
 import matplotlib.pyplot as plt
 import time
 from hhType import HHCell
+import numpy as np
 
 
 def run_sim(ncell):
@@ -39,15 +40,13 @@ def run_sim(ncell):
     return run_total
 
 
-times = []
 cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
+times = [run_sim(n) for n in cell_counts]
 
-for n in cell_counts:
-    times.append(run_sim(n))
+np.savetxt("nrnpythontdata.txt", times, newline="\n")
 
-print "done"
-plt.plot(cell_counts, times, '-ko')
-plt.xlabel("# cells")
-plt.ylabel("Simulation time (s)")
-plt.title("nrnpython times")
-plt.show()
+# plt.plot(cell_counts, times, '-ko')
+# plt.xlabel("# cells")
+# plt.ylabel("Simulation time (s)")
+# plt.title("nrnpython times")
+# plt.show()

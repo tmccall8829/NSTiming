@@ -19,13 +19,17 @@ pynn_with_brian_times = [3.91313624382, 3.8574860096, 3.94870305061, 5.521804094
 
 neuron_times = [0.02, 0.03, 0.09, 0.86, 2.8, 13.31, 28.26, 49.32]
 
+pynest_times = [0.00632691383362, 0.0424859523773, 0.331573963165, 3.29492783546,
+                8.20970392227, 16.3669438362, 24.6245369911, 33.1562879086]
+
 # In order of speed from slowest to fastest
-#plt.plot(cell_counts, pynn_with_neuron_times, '-o', label='PyNN with NEURON')
+plt.plot(cell_counts, pynn_with_neuron_times, '-o', label='PyNN with NEURON')
 plt.plot(cell_counts, nrnpython_times, '-o', label='nrnpython')
 plt.plot(cell_counts, neuron_times, '-o', label='NEURON')
 plt.plot(cell_counts, brian1_times, '-o', label='Brian1')
 plt.plot(cell_counts, pynn_with_brian_times, '-o', label='PyNN with Brian1')
 plt.plot(cell_counts, brian2_times, '-o', label='Brian2')
+plt.plot(cell_counts, pynest_times, '-o', label='PyNEST')
 
 plt.xlabel("# cells")
 plt.ylabel("Simulation time (s)")
