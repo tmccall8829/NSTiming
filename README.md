@@ -1,10 +1,11 @@
 ## About
 This repository contains files for testing the simulation speeds of the following neural simulators:
-- PyNN (using both NEURON and Brian)
+- PyNN (using NEURON, Brian1, and NEST)
 - NEURON
 - Neuron + python (nrnpython)
 - Brian1
 - Brian2
+- NEST
 
 More simulators and languages will likely be added over time. Below is a link to a google drive document containing the most up-to-date tables and graphs.
 
