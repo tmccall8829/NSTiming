@@ -8,7 +8,7 @@ def run_sim(ncell):
 
     setup0 = time.time()
 
-    sim.setup()
+    sim.setup(timestep=0.025)
 
     hh_cell_type = sim.HH_cond_exp()
 

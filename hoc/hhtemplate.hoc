@@ -1,6 +1,6 @@
 begintemplate hhcell
 
-public soma, synlist, stim, connect2target, is_art
+public soma, synlist, stim, connect2target, is_art, v_vec
 
 objref synlist, stim
 
@@ -10,6 +10,7 @@ proc init() {
     define_geometry()
     define_biophysics()
     insert_stim()
+    record_voltages()
 }
 
 proc define_geometry() {
@@ -39,5 +40,11 @@ obfunc connect2target() { localobj nc
     return nc
 }
 
+objref v_vec
+
+proc record_voltages() {
+    v_vec = new Vector()
+    v_vec.record(&soma.v(0.5))
+}
 
 endtemplate hhcell

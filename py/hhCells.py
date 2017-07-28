@@ -19,6 +19,8 @@ def run_sim(ncell):
         i += 1
 
     h.tstop = 100.0
+    h.dt = 0.1
+    h.steps_per_ms = 10
 
     setup1 = time.time()
 

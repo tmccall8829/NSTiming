@@ -5,6 +5,7 @@ import time
 
 def run_sim(ncell):
     print "Cells: ", ncell
+    defaultclock.dt = 0.025 * ms
 
     setup0 = time.time()
 
@@ -35,15 +36,19 @@ def run_sim(ncell):
     print "Setup: ", setup_total
     print "Run: ", run_total
     print "Total sim time: ", setup_total + run_total
-    return run_total
 
-    #plt.plot(trace.times / ms, trace[0] / mV)
-    #plt.show()
+    # if ncell <= 10:
+    #     fig, ax = plt.subplots(ncell, sharex=True)
+    #     for i in range(0, ncell): # i: 0-ncell-1 because range() doesn't include upper bound
+    #         ax[i].plot(trace.times / ms, trace[i] / mV)
+    #     plt.show()
+
+    return run_total
 
 times = []
 cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
 for celln in cell_counts:
-    times.append(run_sim(celln))
+   times.append(run_sim(celln))
 
 plt.plot(cell_counts, times, '-ko')
 plt.xlabel("# cells")

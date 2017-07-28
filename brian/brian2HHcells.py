@@ -4,6 +4,7 @@ import time
 
 def run_sim(ncell):
     print "Cells: ", ncell
+    defaultclock.dt = 0.025 * ms
 
     setup0 = time.time()
 
@@ -61,13 +62,13 @@ def run_sim(ncell):
 
     return run_total
 
-# times = []
-# cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
-# for celln in cell_counts:
-#     times.append(run_sim(celln))
-#
-# plt.plot(cell_counts, times, '-ko')
-# plt.xlabel("# cells")
-# plt.ylabel("Simulation time (s)")
-# plt.title("Brian2")
-# plt.show()
+times = []
+cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
+for celln in cell_counts:
+    times.append(run_sim(celln))
+
+plt.plot(cell_counts, times, '-ko')
+plt.xlabel("# cells")
+plt.ylabel("Simulation time (s)")
+plt.title("Brian2")
+plt.show()

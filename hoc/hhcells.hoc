@@ -23,6 +23,8 @@ proc mkcells() { local i  localobj cell, nc, nil, stim
 mkcells(ncell)
 
 tstop = 100
+steps_per_ms = 10
+dt = 0.1
 
 setup1 = startsw()
 
