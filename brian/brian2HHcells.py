@@ -1,10 +1,18 @@
+# Check the python version before running!
+import sys
+
+if sys.version_info[0] != 3:
+    print("This script requires Python version 3.x! Exiting...")
+    sys.exit(1)
+
+
 from brian2 import *
 import matplotlib.pyplot as plt
 import time
 import numpy as np
 
 def run_sim(ncell):
-    print "Cells: ", ncell
+    print("Cells: ", ncell)
     defaultclock.dt = 0.1 * ms
 
     setup0 = time.time()
@@ -57,7 +65,7 @@ def run_sim(ncell):
     run_total = t1 - t0
     #print "Setup: ", setup_total
     #print "Run: ", run_total
-    print "Total sim time: ", setup_total + run_total
+    print("Total sim time: ", setup_total + run_total)
 
     # plt.plot(M.t / ms, M[0].vm / mV)
     # plt.show()

@@ -1,3 +1,10 @@
+# Check the python version before running!
+import sys
+
+if sys.version_info[0] != 2:
+    print("This script requires Python version 2.x! Exiting...")
+    sys.exit(1)
+
 from brian import *
 from brian.library.ionic_currents import *
 import matplotlib.pyplot as plt
@@ -5,7 +12,7 @@ import time
 import numpy as np
 
 def run_sim(ncell):
-    print "Cells: ", ncell
+    print("Cells: ", ncell)
     defaultclock.dt = 0.1 * ms
 
     setup0 = time.time()
@@ -34,9 +41,9 @@ def run_sim(ncell):
     t1 = time.time()
     setup_total = setup1 - setup0
     run_total = t1 - t0
-    print "Setup: ", setup_total
-    print "Run: ", run_total
-    print "Total sim time: ", setup_total + run_total
+    print("Setup: ", setup_total)
+    print("Run: ", run_total)
+    print("Total sim time: ", setup_total + run_total)
 
     # if ncell <= 10:
     #     fig, ax = plt.subplots(ncell, sharex=True)
