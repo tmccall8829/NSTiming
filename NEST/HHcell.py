@@ -1,4 +1,4 @@
-from nest import nest
+import nest
 import matplotlib.pyplot as plt
 import time
 
