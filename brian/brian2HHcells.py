@@ -58,17 +58,13 @@ def run_sim(ncell):
     run(60 * ms)
     neuron.I_inj = 0 * uA
     run(20 * ms)
-    #run(100 * ms)
 
     t1 = time.time()
     setup_total = setup1 - setup0
     run_total = t1 - t0
-    #print "Setup: ", setup_total
-    #print "Run: ", run_total
+    print("Setup: ", setup_total)
+    print("Run: ", run_total)
     print("Total sim time: ", setup_total + run_total)
-
-    # plt.plot(M.t / ms, M[0].vm / mV)
-    # plt.show()
 
     return run_total
 
@@ -76,19 +72,4 @@ def run_sim(ncell):
 cell_counts = [1, 10, 100, 1000, 2500, 5000, 7500, 10000]
 times = [run_sim(n) for n in cell_counts]
 
-# stop = 0
-# i = 10
-# while stop == 0:
-#     t = run_sim(i)
-#     if t > 5:
-#         stop = 1
-#     else:
-#         i += 1000
-
 np.savetxt("brian2tdata.txt", times, newline="\n")
-
-# plt.plot(cell_counts, times, '-ko')
-# plt.xlabel("# cells")
-# plt.ylabel("Simulation time (s)")
-# plt.title("Brian2")
-# plt.show()
