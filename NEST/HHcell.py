@@ -1,4 +1,4 @@
-import nest
+from nest import nest
 import matplotlib.pyplot as plt
 import time
 
@@ -14,7 +14,7 @@ modulation frequencies (eg ac_generator) - Hz
 """
 
 def run_sim(ncell):
-    print "Cells: ", ncell
+    print("Cells: ", ncell)
 
     nest.ResetKernel()
 
@@ -55,9 +55,9 @@ def run_sim(ncell):
     # pylab.figure(1)
     # pylab.plot(ts, Vms)
     # pylab.show()
-    print "Setup time: ", setup1 - setup0
-    print "Run time: ", t1 - t0
-    print "Total sim time: ", (setup1 - setup0) + (t1 - t0)
+    print("Setup time: ", setup1 - setup0)
+    print("Run time: ", t1 - t0)
+    print("Total sim time: ", (setup1 - setup0) + (t1 - t0))
     return (setup1 - setup0) + (t1 - t0)
 
 times = []
